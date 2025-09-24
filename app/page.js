@@ -15,6 +15,11 @@ export default function RootPage() {
                 Go to Week 2 →
               </Link>
             </li>
+            <li>
+              <Link className="" href="/week-3">
+                Go to Week 3 →
+              </Link>
+            </li>
           </ul>
         </nav>
       </header>
