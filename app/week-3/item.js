@@ -28,11 +28,11 @@ export default function Item({
   // Constants for Page
   const itemListStyle = "border w-full border-white p-5 rounded-md gap-2";
   return (
-    <ul className={itemListStyle}>
-      <li>{name}</li>
-      <li>Quantity: {quantity}</li>
-      <li>Category: {toPascalCase(category)}</li>
-    </ul>
+    <li className={itemListStyle}>
+      <p>{name}</p>
+      <p>Quantity: {quantity}</p>
+      <p>Category: {toPascalCase(category)}</p>
+    </li>
   );
 }
 
