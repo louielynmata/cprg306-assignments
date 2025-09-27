@@ -1,6 +1,5 @@
-// Shared styling constants
+// Global Tailwind CSS styling constants, they are stored in this file for reusability.
 
-// Page
 export const linkStyling =
   "text-blue-300 font-semibold hover:underline hover:text-pink-200 p-2 inline-flex";
 

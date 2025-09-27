@@ -1,10 +1,16 @@
-/*
+/**
 Louielyn Mata - CRPG 306-B WEBDEV2
 Assignment no. 3
 */
 import ItemList from "./item-list";
 import { pageContainerMed, h1Styling } from "../styles";
 
+/**
+ * Renders the main page for the shopping list application.
+ * Displays a styled header and a section containing the ItemList component.
+ *
+ * @returns {JSX.Element} The rendered shopping list page.
+ */
 export default function Page() {
   return (
     <main className={pageContainerMed}>
