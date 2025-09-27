@@ -88,8 +88,10 @@ export default function ItemList() {
     item12,
   ];
 
+  const boxContainer = "flex flex-col gap-3 w-full";
+
   return (
-    <article>
+    <article className={boxContainer}>
       {itemsArray.map((item) => (
         <Item key={item.name} {...item} />
       ))}

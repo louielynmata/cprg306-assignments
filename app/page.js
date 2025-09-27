@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { linkStyling, pageContainer, navContainer } from "./styles";
+import { linkStyling, pageContainer, navContainer, h1Styling } from "./styles";
 import PropTypes from "prop-types";
 
 export default function RootPage() {
   return (
     <main className={pageContainer}>
       <header className="text-center">
-        <h1 className="text-2xl">CPRG 306: Web Development 2 - Assignments</h1>
+        <h1 className={h1Styling}>CPRG 306: Web Development 2 - Assignments</h1>
         <nav className={navContainer}>
           <ul>
             <li>
