@@ -1,22 +1,21 @@
 import Link from "next/link";
+import { linkStyling, pageContainer, navContainer } from "./styles";
+import PropTypes from "prop-types";
 
 export default function RootPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
+    <main className={pageContainer}>
       <header className="text-center">
         <h1 className="text-2xl">CPRG 306: Web Development 2 - Assignments</h1>
-        <nav className="mt-8">
+        <nav className={navContainer}>
           <ul>
             <li>
-              <Link
-                className="text-blue-300 font-semibold hover:underline hover:text-pink-200"
-                href="/week-2"
-              >
+              <Link className={linkStyling} href="/week-2">
                 Go to Week 2 →
               </Link>
             </li>
             <li>
-              <Link className="" href="/week-3">
+              <Link className={linkStyling} href="/week-3">
                 Go to Week 3 →
               </Link>
             </li>
@@ -26,3 +25,8 @@ export default function RootPage() {
     </main>
   );
 }
+
+// Props Validation
+RootPage.propTypes = {
+  linkStyling: PropTypes.string,
+};

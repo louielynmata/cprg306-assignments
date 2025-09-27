@@ -90,8 +90,8 @@ export default function ItemList() {
 
   return (
     <article>
-      {itemsArray.map((item, index) => (
-        <Item key={index} {...item} />
+      {itemsArray.map((item) => (
+        <Item key={item.name} {...item} />
       ))}
     </article>
   );
