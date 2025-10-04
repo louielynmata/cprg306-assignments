@@ -1,13 +1,7 @@
-// TO DO:
-// Edit page.js to be a Next.js page component that renders the NewItem component.
-
-// TO DO:
-// Setup NewItem Component
-// Add the "use client" directive to the top of the file.
-// Import the useState hook from React.
 "use client";
 import { useState } from "react";
 import { whiteContainer, Button } from "../styles";
+
 export default function NewItem() {
   // Use states
   const [quantity, setQuantity] = useState(1);
