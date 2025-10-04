@@ -15,7 +15,7 @@ export const pageContainerMed =
 
 export const navContainer = "flex-auto flex-col gap-2 mt-5";
 
-export const whiteContainer = "bg-blue-100 p-6 rounded-lg";
+export const whiteContainer = "bg-blue-100 p-8 rounded-lg";
 
 export const Button =
   "py-3 px-6 text-2xl rounded-md transition-colors transition-duration-500";

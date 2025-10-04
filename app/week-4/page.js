@@ -11,21 +11,20 @@ export default function Page() {
   // Use states
   const [quantity, setQuantity] = useState(1);
 
-  // TO DO: Make increment and decrement function
   function increment() {
     setQuantity(quantity < 20 ? quantity + 1 : quantity);
+    // Add conditional button "disabled" state
   }
 
   function decrement() {
     setQuantity(quantity > 1 ? quantity - 1 : quantity);
+    // Add conditional button "disabled" state
   }
 
-  // TO DO: Set-up render
-  // TO DO: Style Component
   return (
     <main className={pageContainerMed}>
       <header>
-        <h1 className={`${h1Styling} text-left w-full`}>Add New Item</h1>
+        <h1 className={`${h1Styling} w-full`}>Add New Item</h1>
       </header>
 
       <section className={whiteContainer}>
