@@ -6,9 +6,8 @@ This is a SAIT SD CPRG306-B assignment folder by [Louielyn Mata](https://github.
 
 This repo is for my **CPRG 306 – WEBDEV2, Week 2 Assignment**. It’s the starting point for all future assignments, built with a Next.js app named `cprg306-assignments`.
 
-In Week 2, I created a `week-2` page with a heading and a reusable `StudentInfo` component that shows my name and GitHub repo link. I also updated the root page to display the course title and a link to the Week 2 page. Everything follows the required folder structure and is pushed to a public GitHub repository.
+This will be updated weekly until the final project.
 
-Assignment details can be read here: [Week-2 Assignment](https://sd-web-2.vercel.app/week-2/assignment).
 
 ## 3. Getting Started
 
