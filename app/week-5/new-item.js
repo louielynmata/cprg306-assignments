@@ -47,7 +47,7 @@ export default function NewItem({ onDataSend }) {
   function resetStates() {
     setName("");
     setQuantity(1);
-    setCategory("produce");
+    setCategory("Produce");
   }
 
   // Quantity functions

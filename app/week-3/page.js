@@ -14,7 +14,7 @@ import { pageContainerMed, h1Styling } from "../styles";
 export default function Page() {
   return (
     <main className={pageContainerMed}>
-      <h1 className={`${h1Styling} text-left w-full`}>Shopping List</h1>
+      <h1 className={`${h1Styling} w-full text-left`}>Shopping List</h1>
       <section className="w-full">
         <ItemList />
       </section>
