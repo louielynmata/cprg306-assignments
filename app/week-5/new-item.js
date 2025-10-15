@@ -1,8 +1,22 @@
 "use client";
 import { useState } from "react";
-import { whiteContainer, Button } from "../styles";
+import {
+  whiteContainer,
+  buttonStyling,
+  labelText,
+  inputStyling,
+  formField,
+} from "../styles";
 
+/**
+ * NewItem component for adding a new item.
+ * @param {*} param0  Props containing onDataSend function to send data to parent.
+ * @returns {JSX.Element} Rendered NewItem component with form.
+ */
 export default function NewItem({ onDataSend }) {
+  // Constants
+  const PLACEHOLDER_TEXT = "eg. milk, 4 L 🥛";
+
   // Use States
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(1);
@@ -47,31 +61,38 @@ export default function NewItem({ onDataSend }) {
 
   // Returned and rendered JSX
   return (
-    <section className={whiteContainer}>
+    <section className={`${whiteContainer} text-slate-600`}>
       <form onSubmit={handleSubmit}>
         {/* Name Field */}
-        <label htmlFor="item-name">Item Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={name}
-          className="bg-amber-800"
-          onChange={(event) => setName(event.target.value)}
-          required
-        />
+        <div className={formField}>
+          <label className={labelText} htmlFor="item-name">
+            Item Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={name}
+            placeholder={PLACEHOLDER_TEXT}
+            className={inputStyling}
+            onChange={(event) => setName(event.target.value)}
+            required
+          />
+        </div>
 
         {/* Quantity Field */}
-        <article>
-          <label htmlFor="item-quantity" className="text-gray-700">
-            Quantity:{" "}
-          </label>
-          <span className="font-bold text-blue-800">{quantity}</span>
+        <div className={formField}>
+          <div className="flex items-center">
+            <label className={labelText} htmlFor="item-quantity">
+              Quantity:{" "}
+            </label>
+            <span className="font-bold text-sky-800">{quantity}</span>
+          </div>
           <div className="my-4 flex w-full flex-row justify-items-start gap-4">
             <button
               type="button"
               onClick={decrement}
-              className={`${Button} bg-blue-300 text-gray-900 hover:bg-blue-400 disabled:bg-gray-200 disabled:text-gray-400`}
+              className={`${buttonStyling} dark: bg-sky-300 text-2xl text-gray-900 hover:bg-sky-400 disabled:bg-gray-200 disabled:text-gray-400`}
               disabled={quantity <= 1}
             >
               -
@@ -79,37 +100,46 @@ export default function NewItem({ onDataSend }) {
             <button
               type="button"
               onClick={increment}
-              className={`${Button} bg-blue-700 hover:bg-blue-500 disabled:bg-blue-200 disabled:text-blue-400`}
+              className={`${buttonStyling} bg-sky-700 text-sky-50 hover:bg-sky-500 disabled:bg-blue-200 disabled:text-blue-400`}
               disabled={quantity >= 20}
             >
               +
             </button>
           </div>
-          <p className="text-sm text-gray-500">Allowed Range: 1-20</p>
-        </article>
+          <p className="text-sm text-gray-500">Allowed Range: 1-20 only</p>
+        </div>
 
         {/* Category Field */}
-        <label htmlFor="category">Category</label>
-        <select
-          id="category"
-          name="category"
-          value={category}
-          onChange={(event) => setCategory(event.target.value)}
-        >
-          <option value="produce">Produce</option>
-          <option value="dairy">Dairy</option>
-          <option value="bakery">Bakery</option>
-          <option value="meat">Meat</option>
-          <option value="frozen foods">Frozen Foods</option>
-          <option value="canned goods">Canned Goods</option>
-          <option value="dry goods">Dry Goods</option>
-          <option value="beverages">Beverages</option>
-          <option value="snacks">Snacks</option>
-          <option value="household">Household</option>
-          <option value="other">Other</option>
-        </select>
+        <div className={formField}>
+          <label htmlFor="category" className={labelText}>
+            Category
+          </label>
+          <select
+            id="category"
+            name="category"
+            value={category}
+            onChange={(event) => setCategory(event.target.value)}
+            className={inputStyling}
+          >
+            <option value="Produce">Produce</option>
+            <option value="Dairy">Dairy</option>
+            <option value="Bakery">Bakery</option>
+            <option value="Meat">Meat</option>
+            <option value="Frozen Foods">Frozen Foods</option>
+            <option value="Canned Goods">Canned Goods</option>
+            <option value="Dry Goods">Dry Goods</option>
+            <option value="Beverages">Beverages</option>
+            <option value="Snacks">Snacks</option>
+            <option value="Household">Household</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
 
-        <input type="submit" className="button" value="Add Item" />
+        <input
+          type="submit"
+          className={`${buttonStyling} mt-2 cursor-pointer bg-violet-700 text-xl text-violet-50 hover:bg-violet-500`}
+          value="Add Item"
+        />
       </form>
     </section>
   );

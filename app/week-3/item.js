@@ -1,18 +1,6 @@
 import PropTypes from "prop-types";
 
 /**
- * Function to make variable into Pascal Case.
- * @param {*} str - Any string data type
- * @returns Pascal Case of string First letter uppercase.
- */
-function toPascalCase(str) {
-  return str
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(" ");
-}
-
-/**
  * Item component displays an item's name, quantity, and category.
  * @param {Object} param0 - Props for the component.
  * @param {string} param0.name - Name of the item.
@@ -31,7 +19,7 @@ export default function Item({
     <li className={itemListStyle}>
       <p>{name}</p>
       <p>Quantity: {quantity}</p>
-      <p>Category: {toPascalCase(category)}</p>
+      <p className="capitalize">Category: {category}</p>
     </li>
   );
 }
