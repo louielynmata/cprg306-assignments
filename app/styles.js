@@ -11,7 +11,7 @@ export const pageContainer =
   "flex min-h-screen flex-col items-center justify-center p-24 w-3xl";
 
 export const pageContainerMed =
-  "flex min-h-screen flex-col items-center justify-center p-24 w-xl";
+  "flex min-h-screen flex-col items-center justify-center p-24 w-xl dark:text-gray-700";
 
 export const navContainer = "flex-auto flex-col gap-2 mt-5";
 
