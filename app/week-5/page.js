@@ -5,7 +5,7 @@ Assignment Week 5
 "use client";
 import { React, useState } from "react";
 import NewItem from "./new-item";
-import { pageContainer, pageContainerMed, h1Styling } from "../styles";
+import { pageContainer, h1Styling } from "../styles";
 
 export default function Page() {
   // State to hold data from child component
@@ -25,16 +25,3 @@ export default function Page() {
     </main>
   );
 }
-
-// ✅ Step 5: Style with Tailwind CSS
-// [ ] Add Tailwind utility classes for layout, spacing, and colors
-//     Example: `className="p-4 bg-white rounded-lg shadow-md space-y-4"`
-// [ ] Ensure the form looks clean and user-friendly
-
-// ✅ Step 6: Test the Component
-// [ ] Type values into all fields
-// [ ] Submit the form
-// [ ] Confirm that:
-//     → An alert appears with correct data
-//     → Form resets to initial state
-//     → Console logs show the created item

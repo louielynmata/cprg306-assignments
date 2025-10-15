@@ -65,7 +65,7 @@ export default function NewItem({ onDataSend }) {
       <form onSubmit={handleSubmit}>
         {/* Name Field */}
         <div className={formField}>
-          <label className={labelText} htmlFor="item-name">
+          <label className={labelText} htmlFor="name">
             Item Name
           </label>
           <input
@@ -92,7 +92,7 @@ export default function NewItem({ onDataSend }) {
             <button
               type="button"
               onClick={decrement}
-              className={`${buttonStyling} dark: bg-sky-300 text-2xl text-gray-900 hover:bg-sky-400 disabled:bg-gray-200 disabled:text-gray-400`}
+              className={`${buttonStyling} text-2xl text-gray-900 hover:bg-sky-400 disabled:bg-gray-200 disabled:text-gray-400 dark:bg-sky-300`}
               disabled={quantity <= 1}
             >
               -
