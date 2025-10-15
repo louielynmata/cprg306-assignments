@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { whiteContainer, Button } from "../styles";
+import { whiteContainer, button } from "../styles";
 
 export default function NewItem() {
   // Use states
@@ -21,10 +21,10 @@ export default function NewItem() {
         <span className="font-bold text-blue-800">{quantity}</span>
       </h2>
 
-      <div className="flex flex-row gap-4 my-4 w-full justify-items-start">
+      <div className="my-4 flex w-full flex-row justify-items-start gap-4">
         <button
           onClick={decrement}
-          className={`${Button} text-gray-900 bg-blue-300 hover:bg-blue-400 disabled:bg-gray-200 disabled:text-gray-400`}
+          className={`${button} bg-blue-300 text-gray-900 hover:bg-blue-400 disabled:bg-gray-200 disabled:text-gray-400`}
           disabled={quantity <= 1}
         >
           -
@@ -32,13 +32,13 @@ export default function NewItem() {
 
         <button
           onClick={increment}
-          className={`${Button} bg-blue-700  hover:bg-blue-500 disabled:bg-blue-200 disabled:text-blue-400`}
+          className={`${button} bg-blue-700 hover:bg-blue-500 disabled:bg-blue-200 disabled:text-blue-400`}
           disabled={quantity >= 20}
         >
           +
         </button>
       </div>
-      <p className="text-gray-500 text-sm">Allowed Range: 1-20</p>
+      <p className="text-sm text-gray-500">Allowed Range: 1-20</p>
     </section>
   );
 }
