@@ -58,6 +58,12 @@ export default function Page() {
           >
             Category
           </button>
+          <button
+            className={`${buttonStyling} cursor-pointer text-sm active:bg-violet-700 ${btnSelected("group")}`}
+            onClick={() => setSortBy("group")}
+          >
+            Group by Category
+          </button>
         </article>
 
         {/* Render the ItemList component with itemsArray as props */}
