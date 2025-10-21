@@ -14,8 +14,9 @@ export default function Item({
   category = "Uncategorized",
 }) {
   // Constants for Page
-  const itemListStyle = "border w-full border-white p-5 rounded-md gap-2";
-  // Render JSX
+  const itemListStyle =
+    "border w-full border-slate-400 dark:border-slate-100 p-5 rounded-md gap-2";
+  // Render JSX return (
   return (
     <li className={itemListStyle}>
       <p>{name}</p>

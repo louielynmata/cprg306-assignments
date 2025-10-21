@@ -17,6 +17,9 @@ export const navContainer = "flex-auto flex-col gap-2 mt-5";
 
 export const whiteContainer = "bg-white p-8 rounded-lg box-border shadow-md";
 
+export const darkContainer =
+  "bg-slate-100 dark:bg-slate-800 p-8 rounded-lg box-border shadow-md";
+
 export const buttonStyling =
   "py-3 px-6 rounded-md transition-all duration-200 hover:translate-y-1 box-shadow: var(--shadow-sm)";
 

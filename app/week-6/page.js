@@ -3,9 +3,14 @@ Louielyn Mata - CRPG 306-B WEBDEV2
 Assignment Week 6
 */
 "use client";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import ItemList from "./item-list";
-import { pageContainerMed, h1Styling, buttonStyling } from "../styles";
+import {
+  pageContainer,
+  h1Styling,
+  buttonStyling,
+  darkContainer,
+} from "../styles";
 import itemsArray from "./items.json";
 
 /**
@@ -17,7 +22,10 @@ import itemsArray from "./items.json";
 export default function Page() {
   const [sortBy, setSortBy] = useState("name");
 
-  // button selected state styling
+  /**
+   * Get the button selected state styling.
+   * @param {*} field - The field to check.
+   */
   const btnSelected = (field) => {
     return sortBy === field
       ? "bg-violet-700 text-sky-50 hover:bg-violet-700"
@@ -25,26 +33,33 @@ export default function Page() {
   };
 
   return (
-    <main className={pageContainerMed }>
-      <h1 className={`${h1Styling} w-full text-sky-900 dark:text-sky-200`}>
-        Shopping List - Week 6
-      </h1>
-      <section className="mt-2 mb-5 flex w-full items-center gap-2 align-middle">
-        <p className="text-slate-300">Sort by: </p>
-        <button
-          className={`${buttonStyling} cursor-pointer text-sm active:bg-violet-700 ${btnSelected("name")}`}
-          onClick={() => setSortBy("name")}
+    <main className={pageContainer}>
+      <header>
+        <h1
+          className={`${h1Styling} w-full text-left text-sky-900 dark:text-sky-200`}
         >
-          Name
-        </button>
-        <button
-          className={`${buttonStyling} cursor-pointer text-sm active:bg-violet-700 ${btnSelected("category")}`}
-          onClick={() => setSortBy("category")}
+          Shopping List - Week 6
+        </h1>
+      </header>
+      <section className={`${darkContainer} mt-5 w-xl`}>
+        <article
+          className={`mt-2 mb-5 flex w-full items-center gap-2 align-middle`}
         >
-          Category
-        </button>
-      </section>
-      <section className="w-full">
+          <p className="text-slate-600 dark:text-slate-300">Sort by: </p>
+          <button
+            className={`${buttonStyling} cursor-pointer text-sm active:bg-violet-700 ${btnSelected("name")}`}
+            onClick={() => setSortBy("name")}
+          >
+            Name
+          </button>
+          <button
+            className={`${buttonStyling} cursor-pointer text-sm active:bg-violet-700 ${btnSelected("category")}`}
+            onClick={() => setSortBy("category")}
+          >
+            Category
+          </button>
+        </article>
+
         {/* Render the ItemList component with itemsArray as props */}
         <ItemList items={itemsArray} sortBy={sortBy} />
       </section>
