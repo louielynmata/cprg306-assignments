@@ -15,6 +15,7 @@ export default function Item({
 }) {
   // Constants for Page
   const itemListStyle = "border w-full border-white p-5 rounded-md gap-2";
+  // Render JSX
   return (
     <li className={itemListStyle}>
       <p>{name}</p>
