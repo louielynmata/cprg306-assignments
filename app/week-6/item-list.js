@@ -1,14 +1,10 @@
-"use client";
-import { useState, useRef } from "react";
 import Item from "./item.js";
 /**
  * Renders a list of grocery items using the Item component.
  * Each item has a list. The list are stored in the array, and they are rendered through a map to the array.
  * @returns {JSX.Element} An article element containing a list of Item components, each representing a grocery item.
  */
-export default function ItemList({ items }) {
-  const [sortBy, setSortBy] = useState("name");
-
+export default function ItemList({ items, sortBy }) {
   const boxContainer = "flex flex-col gap-3 w-full";
 
   return (
