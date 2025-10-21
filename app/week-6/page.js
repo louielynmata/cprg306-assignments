@@ -40,7 +40,7 @@ export default function Page() {
         </h1>
       </header>
       <section className={`${darkContainer} mt-5 w-xl`}>
-        <article
+        <section
           className={`mt-2 mb-5 flex w-full items-center justify-center gap-2 align-middle`}
         >
           <p className="text-slate-600 dark:text-slate-300">Sort by: </p>
@@ -62,7 +62,7 @@ export default function Page() {
           >
             Group by Category
           </button>
-        </article>
+        </section>
 
         {/* Render the ItemList component with itemsArray as props */}
         <ItemList items={itemsArray} sortBy={sortBy} />
