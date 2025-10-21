@@ -18,6 +18,7 @@ export default function ItemList({ items, sortBy }) {
     }
   });
 
+  // Group items by category if sortBy is "group"
   const groupedItems = sortedItems.reduce((groups, item) => {
     // If the category doesn't exist yet, create it
     if (!groups[item.category]) {
@@ -28,27 +29,37 @@ export default function ItemList({ items, sortBy }) {
     return groups;
   }, {});
 
+  // Get sorted categories
+  const sortedCategories = Object.keys(groupedItems).sort();
+
+  // Render JSX
   return sortBy === "group" ? (
     <div className={boxContainer}>
-      {Object.entries(groupedItems).map(([category, itemsInCategory]) => (
-        <div key={category}>
-          <h2 className="mt-4 mb-2 text-lg font-semibold capitalize">
-            {category}
-          </h2>
-          <ul className={boxContainer}>
-            {/* Render the items in the current category */}
-            {itemsInCategory.map((item) => (
-              <Item key={item.name} {...item} />
-            ))}
-          </ul>
-        </div>
-      ))}
+      {sortedCategories.map((category) => {
+        // Get items in the current category
+        const itemsInCategory = groupedItems[category]
+          .slice() // Create a shallow copy to avoid mutating original array
+          .sort((a, b) => a.name.localeCompare(b.name)); // Sort items by name
+        // Render category section
+        return (
+          <div key={category}>
+            <h2 className="mt-4 mb-2 text-lg font-semibold capitalize">
+              {category}
+            </h2>
+            <ul className={boxContainer}>
+              {itemsInCategory.map((item) => (
+                <Item key={item.id} {...item} />
+              ))}
+            </ul>
+          </div>
+        );
+      })}
     </div>
   ) : (
+    // If not grouping, just render sorted items
     <ul className={boxContainer}>
-      {/* Render the items in the current category */}
       {sortedItems.map((item) => (
-        <Item key={item.name} {...item} />
+        <Item key={item.id} {...item} />
       ))}
     </ul>
   );
