@@ -7,23 +7,49 @@ import Item from "./item.js";
 export default function ItemList({ items, sortBy }) {
   const boxContainer = "flex flex-col gap-3 w-full";
 
-  return (
+  const sortedItems = [...items].sort((a, b) => {
+    if (sortBy === "name") {
+      return a.name.localeCompare(b.name);
+    }
+    if (sortBy === "category" || sortBy === "group") {
+      return a.category.localeCompare(b.category);
+    } else {
+      return a.quantity - b.quantity;
+    }
+  });
+
+  const groupedItems = sortedItems.reduce((groups, item) => {
+    // If the category doesn't exist yet, create it
+    if (!groups[item.category]) {
+      groups[item.category] = [];
+    }
+    // Add item to the category group it belongs
+    groups[item.category].push(item);
+    return groups;
+  }, {});
+
+  return sortBy === "group" ? (
+    <div className={boxContainer}>
+      {Object.entries(groupedItems).map(([category, itemsInCategory]) => (
+        <div key={category}>
+          <h2 className="mt-4 mb-2 text-lg font-semibold capitalize">
+            {category}
+          </h2>
+          <ul className={boxContainer}>
+            {/* Render the items in the current category */}
+            {itemsInCategory.map((item) => (
+              <Item key={item.name} {...item} />
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  ) : (
     <ul className={boxContainer}>
-      {/* Render the sorted items */}
-      {items
-        .sort((a, b) => {
-          if (sortBy === "name") {
-            return a.name.localeCompare(b.name);
-          }
-          if (sortBy === "category") {
-            return a.category.localeCompare(b.category);
-          } else {
-            return a.quantity - b.quantity;
-          }
-        })
-        .map((item) => (
-          <Item key={item.name} {...item} />
-        ))}
+      {/* Render the items in the current category */}
+      {sortedItems.map((item) => (
+        <Item key={item.name} {...item} />
+      ))}
     </ul>
   );
 }
