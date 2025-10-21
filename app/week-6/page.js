@@ -35,15 +35,13 @@ export default function Page() {
   return (
     <main className={pageContainer}>
       <header>
-        <h1
-          className={`${h1Styling} w-full text-left text-sky-900 dark:text-sky-200`}
-        >
+        <h1 className={`${h1Styling} w-full text-sky-900 dark:text-sky-200`}>
           Shopping List - Week 6
         </h1>
       </header>
       <section className={`${darkContainer} mt-5 w-xl`}>
         <article
-          className={`mt-2 mb-5 flex w-full items-center gap-2 align-middle`}
+          className={`mt-2 mb-5 flex w-full items-center justify-center gap-2 align-middle`}
         >
           <p className="text-slate-600 dark:text-slate-300">Sort by: </p>
           <button
