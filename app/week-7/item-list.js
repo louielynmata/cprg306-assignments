@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-
 import Item from "./item.js";
 import SortButtons from "../components/sort-buttons.js";
 
@@ -9,8 +8,8 @@ import SortButtons from "../components/sort-buttons.js";
  * Each item has a list. The list are stored in the array, and they are rendered through a map to the array.
  * @returns {JSX.Element} An article element containing a list of Item components, each representing a grocery item.
  */
-export default function ItemList({ items = [] }) {
-  const boxContainer = "flex flex-col gap-3 w-full";
+export default function ItemList({ items }) {
+  const boxContainer = "flex flex-col gap-3 w-full ";
 
   // State for sorting
   const [sortBy, setSortBy] = useState("name");
