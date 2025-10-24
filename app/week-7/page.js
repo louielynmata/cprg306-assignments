@@ -30,12 +30,6 @@ export default function Page() {
     setItems([...items, newItem]);
   }
 
-  // State to hold data from child component
-  const [formData, setFormData] = useState("");
-  function handleChildData(data) {
-    setFormData(data);
-  }
-
   // Render JSX
   return (
     <main className={pageContainer}>

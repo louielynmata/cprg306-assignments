@@ -34,13 +34,6 @@ export default function NewItem({ onAddItem }) {
     resetStates();
   }
 
-  // Alert with messages
-  function alertWithMessage(item) {
-    alert(
-      `Item name: ${item.name}, Quantity: ${item.quantity}, Category: ${item.category}`
-    );
-  }
-
   // Reset states
   function resetStates() {
     setName("");

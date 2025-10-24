@@ -20,18 +20,21 @@ export default function SortButtons({ sortBy, setSortBy }) {
       <button
         className={`${buttonStyling} cursor-pointer text-sm active:bg-violet-700 ${btnSelected("name")}`}
         onClick={() => setSortBy("name")}
+        type="button"
       >
         Name
       </button>
       <button
         className={`${buttonStyling} cursor-pointer text-sm active:bg-violet-700 ${btnSelected("category")}`}
         onClick={() => setSortBy("category")}
+        type="button"
       >
         Category
       </button>
       <button
         className={`${buttonStyling} cursor-pointer text-sm active:bg-violet-700 ${btnSelected("group")}`}
         onClick={() => setSortBy("group")}
+        type="button"
       >
         Group by Category
       </button>
