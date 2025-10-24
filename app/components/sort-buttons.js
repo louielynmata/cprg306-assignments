@@ -14,7 +14,7 @@ export default function SortButtons({ sortBy, setSortBy }) {
   return (
     /* Section for Sort Buttons */
     <section
-      className={`mt-2 mb-5 flex w-full items-center justify-center gap-2 align-middle`}
+      className={`mt-2 mb-5 flex w-full items-center justify-start gap-2 align-middle`}
     >
       <p className="text-slate-600 dark:text-slate-300">Sort by: </p>
       <button
