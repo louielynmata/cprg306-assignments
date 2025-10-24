@@ -19,8 +19,14 @@ export default function NewItem({ onAddItem }) {
   function handleSubmit(event) {
     event.preventDefault(); //Stop page reload
     //Create an item object with the current values of name, quantity, and category.
+    const normalizedName = name.toLocaleLowerCase();
     const normalizedCategory = category.toLowerCase();
-    const item = { id, name, quantity, category: normalizedCategory };
+    const item = {
+      id,
+      name: normalizedName,
+      quantity,
+      category: normalizedCategory,
+    };
     console.log("Item created:", item);
     // Send data to parent component
     onAddItem(item);
