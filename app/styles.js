@@ -8,7 +8,7 @@ export const h1Styling = "text-3xl font-bold mb-3";
 
 // Container Styling
 export const pageContainer =
-  "flex w-full min-h-screen flex-col items-center justify-center p-24 w-3xl bg-slate-200 text-gray-700 dark:bg-gray-900 dark:text-gray-200 transition-colors transition-duration-500";
+  "flex min-h-screen flex-col items-center justify-center w-full mx-auto px-6 py-8 bg-slate-200 text-gray-700 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-500 sm:px-2 sm:py-4";
 
 export const pageContainerMed =
   "flex min-h-screen flex-col items-center justify-center p-24 w-xl text-gray-700 bg-slate-200 dark:bg-gray-900 dark:text-gray-200 transition-colors transition-duration-500";
