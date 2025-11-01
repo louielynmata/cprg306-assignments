@@ -40,7 +40,7 @@ export default function RootPage() {
               </Link>
             </li>
             <li>
-              <Link className={linkStyling} href="/week-7">
+              <Link className={linkStyling} href="/week-8">
                 Go to Week 8 →
               </Link>
             </li>
