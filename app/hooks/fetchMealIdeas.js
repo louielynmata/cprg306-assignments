@@ -11,10 +11,6 @@ export async function fetchMealIdeas(ingredient) {
 
   // API URL with ingredient query parameter
   const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`;
-  // Turn on loading state
-  setIsLoading(true);
-  // Reset error state before fetching
-  setError(null);
 
   // Fetch request
   const response = await fetch(url);
@@ -26,8 +22,8 @@ export async function fetchMealIdeas(ingredient) {
     );
   }
 
-  // Parse JSON repsonse
-  const result = await res.json();
+  // Parse JSON response
+  const result = await response.json();
 
   // Return meals array from the result
   return result.meals;

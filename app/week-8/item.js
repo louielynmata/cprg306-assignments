@@ -19,7 +19,7 @@ export default function Item({
     "border w-full border-slate-400 dark:border-slate-100 p-5 rounded-md gap-2";
   // Render JSX return (
   return (
-    <li className={itemListStyle} onClick={onSelect ? onSelect() : null}>
+    <li className={itemListStyle} onClick={onSelect ? () => onSelect() : null}>
       <p>{name}</p>
       <p>Quantity: {quantity}</p>
       <p className="capitalize">Category: {category}</p>
