@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Item from "./item.js";
 import SortButtons from "../components/SortButtons.js";
+import { boxContainer } from "../styles.js";
 
 /**
  * Renders a list of grocery items using the Item component.
@@ -9,8 +10,6 @@ import SortButtons from "../components/SortButtons.js";
  * @returns {JSX.Element} An article element containing a list of Item components, each representing a grocery item.
  */
 export default function ItemList({ items, onItemSelect }) {
-  const boxContainer = "flex flex-col gap-3 w-full ";
-
   // State for sorting
   const [sortBy, setSortBy] = useState("name");
 

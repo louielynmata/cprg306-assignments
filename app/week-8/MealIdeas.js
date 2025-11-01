@@ -1,12 +1,13 @@
-/** The MealIdeas component is responsible for fetching and displaying meal ideas based on a selected shopping list item. Here are a few things to keep in mind when creating this component.
-1. Import Necessary Hooks and Begin Component Definition
-Since this component uses useState and useEffect, start with the "use client" directive.
-Import the useEffect and useState hooks from react.
-This component should receive a single prop: ingredient.
-*/
 "use client";
 import { useState, useEffect } from "react";
 import { fetchMealIdeas } from "../hooks/fetchMealIdeas";
+import {
+  h2Styling,
+  secondaryText,
+  errorText,
+  boxContainer,
+  itemListStyle,
+} from "../styles";
 
 /**
  * MealIdeas Component
@@ -32,13 +33,12 @@ export default function MealIdeas({ ingredient }) {
       setIsLoading(true);
       // Reset error state before fetching
       setError(null);
-
       // Try fetching meal ideas
       try {
         const fetchMeals = await fetchMealIdeas(ingredient);
         setMeals(fetchMeals ?? []); // Update meals state}
       } catch (error) {
-        setError(error);
+        setError(error.message);
       } finally {
         setIsLoading(false); // When done, turn off loading state
       }
@@ -52,7 +52,7 @@ export default function MealIdeas({ ingredient }) {
   if (!ingredient) {
     return (
       <section className="my-4">
-        <h2 className="text-3xl font-semibold">Meal Ideas - Select Item</h2>
+        <h2 className={h2Styling}>Meal Ideas - Select Item</h2>
         <p>Choose an item to see ideas.</p>
       </section>
     );
@@ -61,8 +61,8 @@ export default function MealIdeas({ ingredient }) {
   if (isLoading) {
     return (
       <section className="my-4">
-        <h2 className="text-3xl font-semibold">Meal Ideas</h2>
-        <p> Data is Loading...</p>
+        <h2 className={h2Styling}>Meal Ideas</h2>
+        <p className={secondaryText}> Data is Loading...</p>
       </section>
     );
   }
@@ -70,8 +70,8 @@ export default function MealIdeas({ ingredient }) {
   if (error) {
     return (
       <div className="bg-red-500">
-        <h2 className="text-3xl font-semibold">Meal Ideas</h2>
-        <p>Error: {error}</p>
+        <h2 className={h2Styling}>Meal Ideas</h2>
+        <p className={errorText}>Error: {error}</p>
       </div>
     );
   }
@@ -79,8 +79,8 @@ export default function MealIdeas({ ingredient }) {
   if (!meals || meals.length === 0) {
     return (
       <section className="my-4">
-        <h2 className="text-3xl font-semibold">Meal Ideas</h2>
-        <p>No meal ideas found.</p>
+        <h2 className={h2Styling}>Meal Ideas</h2>
+        <p className={secondaryText}>No meal ideas found.</p>
       </section>
     );
   }
@@ -89,12 +89,16 @@ export default function MealIdeas({ ingredient }) {
   return (
     <section className="my-4">
       <div>
-        <h3 className="my-2 text-2xl">
-          Meal Ideas for &quot;{ingredient}&quot;
+        <h3 className={h2Styling}>
+          Meal Ideas for{" "}
+          <span className={secondaryText}>
+            &quot;
+            {ingredient}&quot;
+          </span>
         </h3>
-        <ul>
+        <ul className={boxContainer}>
           {meals.map((meal) => (
-            <li key={meal.idMeal} className="font-lg my-2">
+            <li key={meal.idMeal} className={`${itemListStyle}`}>
               {meal.strMeal}
             </li>
           ))}

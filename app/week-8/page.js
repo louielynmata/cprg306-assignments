@@ -35,8 +35,24 @@ export default function Page() {
   }
 
   // Function to handle item selection
-  function handleItemSelect(itemName) {
-    setSelectedItemName(itemName);
+  function handleItemSelect(item) {
+    if (!item) {
+      setSelectedItemName("");
+      return;
+    }
+    // 1-Clean selected item name
+    const withoutComma = item.name.split(",")[0];
+
+    // 2- remove extra spaces
+    const trimmed = withoutComma.trim();
+
+    // 3 - remove emoji characters
+    const cleaned = trimmed.replace(
+      /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
+      ""
+    );
+    // 4 - final trim and clean + lowercase for MealDB
+    setSelectedItemName(cleaned.trim().toLowerCase());
   }
 
   // Render JSX
@@ -50,7 +66,7 @@ export default function Page() {
         </h1>
       </header>
 
-      <div className="grid grid-cols-1 items-start gap-5 md:grid-cols-4">
+      <div className="mx-10 grid grid-cols-1 items-start gap-5 md:grid-cols-4">
         <section
           className={`${whiteContainer} sticky top-0 mt-5 max-h-screen overflow-y-auto text-slate-600 md:col-span-1 md:w-full dark:text-slate-300`}
         >
@@ -62,7 +78,9 @@ export default function Page() {
           <ItemList items={items} onItemSelect={handleItemSelect} />
         </section>
 
-        <section>
+        <section
+          className={`${darkContainer} mt-5 md:col-span-1 md:w-full md:max-w-max`}
+        >
           <MealIdeas ingredient={selectedItemName} />
         </section>
       </div>
