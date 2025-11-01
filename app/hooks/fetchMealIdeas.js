@@ -1,16 +1,13 @@
-import { useState, useEffect } from "react";
-
 /**
- *  Fetch meal ideas based on the provided ingredient.
+ * Fetch meal ideas based on the provided ingredient.
+ * Focused on fetching and returning meal ideas data.
  * @param {*} ingredient
- * @returns
+ * @returns {Promise<Array>|null} Array of meal ideas or null if no ingredient is provided.
  */
 export async function FetchMealIdeas(ingredient) {
-  // State Variables - meals
-  const [meals, setMeals] = useState([]);
-  // State Variables for loading and error states
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  if (!ingredient) {
+    return null; // No ingredient yet
+  }
 
   // API URL with ingredient query parameter
   const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`;
@@ -19,31 +16,19 @@ export async function FetchMealIdeas(ingredient) {
   // Reset error state before fetching
   setError(null);
 
-  // Try fetching data
-  try {
-    // Fetch request
-    const res = await fetch(url);
+  // Fetch request
+  const response = await fetch(url);
 
-    // Handle HTTP errors
-    if (!res.ok) {
-      throw new Error(`HTTP Response Error: ${res.status} ${res.statusText}`);
-    }
-
-    // Parse JSON repsonse
-    const result = await res.json();
-
-    // Update meals state
-    setMeals(result);
-  } catch (error) {
-    setError(error);
-  } finally {
-    setLoading(false);
+  // Handle HTTP errors
+  if (!response.ok) {
+    throw new Error(
+      `HTTP Response Error: ${response.status} ${response.statusText}`
+    );
   }
 
-  useEffect(() => {
-    fetchMealIdeas(url);
-  }, [url]);
+  // Parse JSON repsonse
+  const result = await res.json();
 
-  // Return the meals that include the ingredient
-  return { meals, error, isLoading };
+  // Return meals array from the result
+  return result.meals;
 }
