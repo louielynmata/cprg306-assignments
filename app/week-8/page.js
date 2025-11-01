@@ -62,7 +62,7 @@ export default function Page() {
         <h1
           className={`${h1Styling} align-start w-full text-sky-900 sm:p-2 dark:text-sky-200`}
         >
-          Shopping List - Week 7
+          Shopping List - Week 8
         </h1>
       </header>
 

@@ -18,7 +18,7 @@ export default function Item({
   // Render JSX return (
   return (
     <li
-      className={`${itemListStyle} ${onSelect ? "cursor-pointer" + itemListStyleButton : ""}`}
+      className={`${itemListStyle} ${onSelect ? `cursor-pointer ${itemListStyleButton}` : ""}`}
       onClick={onSelect ? () => onSelect() : null}
     >
       <p>{name}</p>
