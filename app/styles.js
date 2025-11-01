@@ -5,7 +5,7 @@ export const linkStyling =
   "text-blue-300 font-semibold hover:underline hover:text-pink-200 p-2 inline-flex";
 
 // Heading Styles
-export const h1Styling = "text-3xl font-bold mb-3";
+export const h1Styling = "text-3xl font-bold my-3";
 
 export const h2Styling = "text-2xl font-semibold mb-2";
 

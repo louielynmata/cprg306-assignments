@@ -52,7 +52,13 @@ export default function MealIdeas({ ingredient }) {
   if (!ingredient) {
     return (
       <section className="my-4">
-        <h2 className={h2Styling}>Meal Ideas - Select Item</h2>
+        <h2 className={h2Styling}>
+          Meal Ideas{" "}
+          <span className={secondaryText}>
+            <br />
+            Select Item
+          </span>
+        </h2>
         <p>Choose an item to see ideas.</p>
       </section>
     );

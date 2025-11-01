@@ -66,14 +66,14 @@ export default function Page() {
         </h1>
       </header>
 
-      <div className="mx-10 grid grid-cols-1 items-start gap-5 md:grid-cols-4">
+      <div className="mx-10 grid grid-cols-1 items-start gap-5 md:grid-cols-[320px_minmax(640px,1fr)_320px]">
         <section
           className={`${whiteContainer} sticky top-0 mt-5 max-h-screen overflow-y-auto text-slate-600 md:col-span-1 md:w-full dark:text-slate-300`}
         >
           <NewItem onAddItem={handleAddItem} />
         </section>
 
-        <section className={`${darkContainer} mt-5 md:col-span-2 md:w-full`}>
+        <section className={`${darkContainer} mt-5 min-w-0`}>
           {/* Render the ItemList component with itemsArray as props */}
           <ItemList items={items} onItemSelect={handleItemSelect} />
         </section>
