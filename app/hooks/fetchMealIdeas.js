@@ -4,7 +4,7 @@
  * @param {*} ingredient
  * @returns {Promise<Array>|null} Array of meal ideas or null if no ingredient is provided.
  */
-export async function FetchMealIdeas(ingredient) {
+export async function fetchMealIdeas(ingredient) {
   if (!ingredient) {
     return null; // No ingredient yet
   }

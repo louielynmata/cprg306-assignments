@@ -12,13 +12,14 @@ export default function Item({
   name = "Item Name",
   quantity = 0,
   category = "Uncategorized",
+  onSelect,
 }) {
   // Constants for Page
   const itemListStyle =
     "border w-full border-slate-400 dark:border-slate-100 p-5 rounded-md gap-2";
   // Render JSX return (
   return (
-    <li className={itemListStyle}>
+    <li className={itemListStyle} onClick={onSelect ? onSelect() : null}>
       <p>{name}</p>
       <p>Quantity: {quantity}</p>
       <p className="capitalize">Category: {category}</p>
@@ -31,4 +32,5 @@ Item.propTypes = {
   name: PropTypes.string,
   quantity: PropTypes.number,
   category: PropTypes.string,
+  onSelect: PropTypes.func,
 };

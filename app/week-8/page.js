@@ -6,7 +6,7 @@ Assignment Week 7
 import { useState } from "react";
 import ItemList from "./item-list";
 import NewItem from "../components/NewItem";
-import { }
+import MealIdeas from "./MealIdeas";
 import {
   pageContainer,
   h1Styling,
@@ -42,7 +42,7 @@ export default function Page() {
         </h1>
       </header>
 
-      <div className="grid grid-cols-1 items-start gap-5 md:grid-cols-3">
+      <div className="grid grid-cols-1 items-start gap-5 md:grid-cols-4">
         <section
           className={`${whiteContainer} sticky top-0 mt-5 max-h-screen overflow-y-auto text-slate-600 md:col-span-1 md:w-full dark:text-slate-300`}
         >
@@ -55,7 +55,7 @@ export default function Page() {
         </section>
 
         <section>
-
+          <MealIdeas />
         </section>
       </div>
     </main>
