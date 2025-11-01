@@ -76,7 +76,7 @@ export default function MealIdeas({ ingredient }) {
     );
   }
 
-  if (!result) {
+  if (!meals || meals.length === 0) {
     return (
       <section className="my-4">
         <h2 className="text-3xl font-semibold">Meal Ideas</h2>

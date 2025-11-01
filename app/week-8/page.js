@@ -26,9 +26,17 @@ export default function Page() {
   const itemsArray = itemsData;
   // State with data from itemsData JSON file
   const [items, setItems] = useState(itemsArray);
+  // State for selected items
+  const [selectedItemName, setSelectedItemName] = useState(null);
+
   // Function to add new item to the list
   function handleAddItem(newItem) {
     setItems([...items, newItem]);
+  }
+
+  // Function to handle item selection
+  function handleItemSelect(itemName) {
+    setSelectedItemName(itemName);
   }
 
   // Render JSX
@@ -51,11 +59,11 @@ export default function Page() {
 
         <section className={`${darkContainer} mt-5 md:col-span-2 md:w-full`}>
           {/* Render the ItemList component with itemsArray as props */}
-          <ItemList items={items} />
+          <ItemList items={items} onItemSelect={handleItemSelect} />
         </section>
 
         <section>
-          <MealIdeas />
+          <MealIdeas ingredient={selectedItemName} />
         </section>
       </div>
     </main>

@@ -8,7 +8,7 @@ import SortButtons from "../components/SortButtons.js";
  * Each item has a list. The list are stored in the array, and they are rendered through a map to the array.
  * @returns {JSX.Element} An article element containing a list of Item components, each representing a grocery item.
  */
-export default function ItemList({ items }) {
+export default function ItemList({ items, onItemSelect }) {
   const boxContainer = "flex flex-col gap-3 w-full ";
 
   // State for sorting
@@ -62,7 +62,11 @@ export default function ItemList({ items }) {
                 </h2>
                 <ul className={boxContainer}>
                   {itemsInCategory.map((item) => (
-                    <Item key={item.id} {...item} />
+                    <Item
+                      key={item.id}
+                      {...item}
+                      onSelect={() => onItemSelect(item)} // Pass item to onSelect
+                    />
                   ))}
                 </ul>
               </div>
@@ -73,7 +77,11 @@ export default function ItemList({ items }) {
         // If not grouping, just render sorted items
         <ul className={boxContainer}>
           {sortedItems.map((item) => (
-            <Item key={item.id} {...item} />
+            <Item
+              key={item.id}
+              {...item}
+              onSelect={() => onItemSelect(item)} // Pass item to onSelect
+            />
           ))}
         </ul>
       )}
