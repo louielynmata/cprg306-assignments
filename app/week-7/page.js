@@ -5,7 +5,7 @@ Assignment Week 7
 "use client";
 import { useState } from "react";
 import ItemList from "./item-list";
-import NewItem from "../components/new-item";
+import NewItem from "../components/NewItem";
 import {
   pageContainer,
   h1Styling,

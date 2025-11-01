@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Item from "./item.js";
-import SortButtons from "../components/sort-buttons.js";
+import SortButtons from "../components/SortButtons.js";
 
 /**
  * Renders a list of grocery items using the Item component.

@@ -5,7 +5,8 @@ Assignment Week 7
 "use client";
 import { useState } from "react";
 import ItemList from "./item-list";
-import NewItem from "../components/new-item";
+import NewItem from "../components/NewItem";
+import { }
 import {
   pageContainer,
   h1Styling,
@@ -51,6 +52,10 @@ export default function Page() {
         <section className={`${darkContainer} mt-5 md:col-span-2 md:w-full`}>
           {/* Render the ItemList component with itemsArray as props */}
           <ItemList items={items} />
+        </section>
+
+        <section>
+
         </section>
       </div>
     </main>
