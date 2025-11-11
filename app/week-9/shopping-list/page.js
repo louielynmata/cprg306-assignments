@@ -1,9 +1,10 @@
 /**
 Louielyn Mata - CRPG 306-B WEBDEV2
-Assignment Week 8
+Assignment Week 9
 */
 "use client";
 import { useState } from "react";
+import { useUserAuth } from "../AuthContext";
 import ItemList from "./item-list";
 import NewItem from "../components/NewItem";
 import MealIdeas from "./MealIdeas";
