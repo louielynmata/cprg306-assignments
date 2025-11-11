@@ -98,6 +98,12 @@ export default function Page() {
         <h1
           className={`${h1Styling} align-start w-full text-sky-900 sm:p-2 dark:text-sky-200`}
         >
+          <Link
+            href="/week-9/"
+            className="me-5 hover:cursor-pointer hover:text-white"
+          >
+            ←
+          </Link>
           Shopping List - Week 9
         </h1>
       </header>
