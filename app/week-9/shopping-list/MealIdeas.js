@@ -1,13 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
-import { fetchMealIdeas } from "../hooks/fetchMealIdeas";
+import { fetchMealIdeas } from "../../hooks/fetchMealIdeas";
 import {
   h2Styling,
   secondaryText,
   errorText,
   boxContainer,
   itemListStyle,
-} from "../styles";
+} from "../../styles";
 
 /**
  * MealIdeas Component

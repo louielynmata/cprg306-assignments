@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { itemListStyle, itemListStyleButton } from "../styles";
+import { itemListStyle, itemListStyleButton } from "../../styles";
 
 /**
  * Item component displays an item's name, quantity, and category.

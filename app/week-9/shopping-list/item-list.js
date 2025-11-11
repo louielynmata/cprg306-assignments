@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import Item from "./item.js";
-import SortButtons from "../components/SortButtons.js";
-import { boxContainer } from "../styles.js";
+import SortButtons from "../../components/SortButtons.js";
+import { boxContainer } from "../../styles.js";
 
 /**
  * Renders a list of grocery items using the Item component.
