@@ -30,6 +30,12 @@ export default function Page() {
   // Week 9 Implementation
   // Use the useUserAuth hook to get the user object
   const { user } = useUserAuth();
+  // Prepare items array from imported JSON data
+  const itemsArray = itemsData;
+  // State with data from itemsData JSON file
+  const [items, setItems] = useState(itemsArray);
+  // State for selected items
+  const [selectedItemName, setSelectedItemName] = useState(null);
 
   // GUARD - REDIRECT: Redirect to login if not authenticated
   const router = useRouter();
@@ -39,32 +45,6 @@ export default function Page() {
       router.push("/week-9/");
     }
   }, [user, router]);
-
-  // Guard clause: if no user, prompt to log in
-  if (!user) {
-    return (
-      <main className={pageContainer}>
-        <header>
-          <h1>Please log in to view your shopping list.</h1>
-        </header>
-        <div>
-          <Link
-            className={`${buttonStyling} my-4 me-2 inline-block cursor-pointer bg-violet-700 py-3 text-violet-50 hover:translate-y-1 hover:bg-violet-500`}
-            href="/week-9/"
-          >
-            Go to Login
-          </Link>
-        </div>
-      </main>
-    );
-  }
-
-  // Prepare items array from imported JSON data
-  const itemsArray = itemsData;
-  // State with data from itemsData JSON file
-  const [items, setItems] = useState(itemsArray);
-  // State for selected items
-  const [selectedItemName, setSelectedItemName] = useState(null);
 
   // Function to add new item to the list
   function handleAddItem(newItem) {
@@ -90,6 +70,25 @@ export default function Page() {
     );
     // 4 - final trim and clean + lowercase for MealDB
     setSelectedItemName(cleaned.trim().toLowerCase());
+  }
+
+  // Guard clause: if no user, prompt to log in
+  if (!user) {
+    return (
+      <main className={pageContainer}>
+        <header>
+          <h1>Please log in to view your shopping list.</h1>
+        </header>
+        <div>
+          <Link
+            className={`${buttonStyling} my-4 me-2 inline-block cursor-pointer bg-violet-700 py-3 text-violet-50 hover:translate-y-1 hover:bg-violet-500`}
+            href="/week-9/"
+          >
+            Go to Login
+          </Link>
+        </div>
+      </main>
+    );
   }
 
   // Render JSX
