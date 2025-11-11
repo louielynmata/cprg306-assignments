@@ -41,7 +41,7 @@ export default function Page() {
     <main className={pageContainer}>
       {!user ? (
         // Not logged in, show login button
-        <section>
+        <section className="text-center">
           <h1 className={h1Styling}>Week 9 - Welcome!</h1>
           <p>Please log in with your GitHub account.</p>
           <button
@@ -53,9 +53,11 @@ export default function Page() {
         </section>
       ) : (
         // Logged in, show user info and logout button
-        <section className={whiteContainer}>
-          <h1 className={h1Styling}>
-            Welcome, {user.displayName} ({user.email})
+        <section className={darkContainer}>
+          <h1 className={`${h1Styling}`}>
+            Welcome,
+            <br />
+            {user.displayName} ({user.email})
           </h1>
           <div>
             <Link

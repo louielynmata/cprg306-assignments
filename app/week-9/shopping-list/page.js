@@ -3,17 +3,21 @@ Louielyn Mata - CRPG 306-B WEBDEV2
 Assignment Week 9
 */
 "use client";
-import { useState } from "react";
-import { useUserAuth } from "../AuthContext";
+import { useEffect, useState } from "react";
+import { useUserAuth } from "../../contexts/AuthContext";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+
 import ItemList from "./item-list";
-import NewItem from "../components/NewItem";
+import NewItem from "../../components/NewItem";
 import MealIdeas from "./MealIdeas";
 import {
   pageContainer,
   h1Styling,
   darkContainer,
   whiteContainer,
-} from "../styles";
+  buttonStyling,
+} from "../../styles";
 import itemsData from "./items.json";
 
 /**
@@ -23,6 +27,38 @@ import itemsData from "./items.json";
  * @returns {JSX.Element} The main page component.
  */
 export default function Page() {
+  // Week 9 Implementation
+  // Use the useUserAuth hook to get the user object
+  const { user } = useUserAuth();
+
+  // GUARD - REDIRECT: Redirect to login if not authenticated
+  const router = useRouter();
+  useEffect(() => {
+    // If user is not authenticated, redirect to login page
+    if (!user) {
+      router.push("/week-9/");
+    }
+  }, [user, router]);
+
+  // Guard clause: if no user, prompt to log in
+  if (!user) {
+    return (
+      <main className={pageContainer}>
+        <header>
+          <h1>Please log in to view your shopping list.</h1>
+        </header>
+        <div>
+          <Link
+            className={`${buttonStyling} my-4 me-2 inline-block cursor-pointer bg-violet-700 py-3 text-violet-50 hover:translate-y-1 hover:bg-violet-500`}
+            href="/week-9/"
+          >
+            Go to Login
+          </Link>
+        </div>
+      </main>
+    );
+  }
+
   // Prepare items array from imported JSON data
   const itemsArray = itemsData;
   // State with data from itemsData JSON file
@@ -63,7 +99,7 @@ export default function Page() {
         <h1
           className={`${h1Styling} align-start w-full text-sky-900 sm:p-2 dark:text-sky-200`}
         >
-          Shopping List - Week 8
+          Shopping List - Week 9
         </h1>
       </header>
 
