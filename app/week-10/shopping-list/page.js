@@ -8,6 +8,10 @@ import { useUserAuth } from "../../contexts/AuthContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
+import {
+  getItems,
+  addItem,
+} from "@/app/week-10/_services/shopping-list-service";
 import ItemList from "./item-list";
 import NewItem from "../../components/NewItem";
 import MealIdeas from "./MealIdeas";
@@ -18,7 +22,6 @@ import {
   whiteContainer,
   buttonStyling,
 } from "../../styles";
-import itemsData from "./items.json";
 
 /**
  * Renders the main page for the shopping list application.
@@ -30,10 +33,11 @@ export default function Page() {
   // Week 9 Implementation
   // Use the useUserAuth hook to get the user object
   const { user } = useUserAuth();
-  // Prepare items array from imported JSON data
-  const itemsArray = itemsData;
-  // State with data from itemsData JSON file
-  const [items, setItems] = useState(itemsArray);
+  // ITEMS STATE now driven by Firestore (starts empty)
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false); // loading indicator
+  const [error, setError] = useState(""); // error message
+
   // State for selected items
   const [selectedItemName, setSelectedItemName] = useState(null);
 
@@ -46,9 +50,51 @@ export default function Page() {
     }
   }, [user, router]);
 
+  // Load items from Firestore for current user
+  async function loadItems() {
+    if (!user?.uid) return; // guard: wait for auth
+    setLoading(true);
+    setError("");
+    try {
+      const data = await getItems(user.uid);
+      setItems(data);
+    } catch (err) {
+      console.error("Failed to load items", err);
+      setError("Failed to load shopping list.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  // Fetch items when user becomes available
+  useEffect(() => {
+    if (user?.uid) {
+      loadItems();
+    }
+  }, [user?.uid]);
+
   // Function to add new item to the list
-  function handleAddItem(newItem) {
-    setItems([...items, newItem]);
+  async function handleAddItem(newItem) {
+    // newItem should be shape: { name, quantity, category, ... }
+    if (!user?.uid) {
+      setError("Not authenticated.");
+      return;
+    }
+    if (!newItem?.name?.trim()) return;
+
+    try {
+      const id = await addItem(user.uid, {
+        name: newItem.name.trim(),
+        quantity: Number(newItem.quantity) || 1,
+        category: newItem.category || "general",
+        createdAt: Date.now(),
+      });
+      // Optimistically append to local state
+      setItems((prev) => [...prev, { id, ...newItem }]);
+    } catch (err) {
+      console.error("Add item failed", err);
+      setError("Could not add item.");
+    }
   }
 
   // Function to handle item selection
@@ -104,7 +150,7 @@ export default function Page() {
           >
             ←
           </Link>
-          Shopping List - Week 9
+          Shopping List - Week 10
         </h1>
       </header>
 
