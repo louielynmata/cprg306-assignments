@@ -1,5 +1,11 @@
-import { db } from "../_utils/firebase";
-import { collection, getDocs, addDoc, query } from "firebase/firestore";
+import { db } from "@/app/utils/firebase";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 
 // getItems
 export const getItems = async (userId) => {
@@ -26,6 +32,19 @@ export const addItem = async (userId, item) => {
     return docRef.id;
   } catch (error) {
     console.error("Error adding item: ", error);
+    throw error;
+  }
+};
+
+// deleteItem
+export const deleteItem = async (userId, itemId) => {
+  if (!userId) throw new Error("User ID is required to delete an item.");
+  if (!itemId) throw new Error("Item ID is required to delete an item.");
+  try {
+    const itemDoc = doc(db, "users", userId, "items", itemId);
+    await deleteDoc(itemDoc);
+  } catch (error) {
+    console.error("Error deleting item: ", error);
     throw error;
   }
 };

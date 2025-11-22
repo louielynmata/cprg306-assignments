@@ -1,6 +1,6 @@
 /**
 Louielyn Mata - CRPG 306-B WEBDEV2
-Assignment Week 9
+Assignment Week 10
 */
 "use client";
 import { useEffect, useState } from "react";
@@ -46,7 +46,7 @@ export default function Page() {
   useEffect(() => {
     // If user is not authenticated, redirect to login page
     if (!user) {
-      router.push("/week-9/");
+      router.push("/week-10/");
     }
   }, [user, router]);
 
@@ -89,8 +89,15 @@ export default function Page() {
         category: newItem.category || "general",
         createdAt: Date.now(),
       });
-      // Optimistically append to local state
-      setItems((prev) => [...prev, { id, ...newItem }]);
+
+      const cleanItem = {
+        id, // Firestore doc ID
+        name: newItem.name.trim(),
+        quantity: Number(newItem.quantity) || 1,
+        category: newItem.category || "general",
+      };
+
+      setItems((prev) => [...prev, cleanItem]);
     } catch (err) {
       console.error("Add item failed", err);
       setError("Could not add item.");
@@ -118,6 +125,16 @@ export default function Page() {
     setSelectedItemName(cleaned.trim().toLowerCase());
   }
 
+  async function handleDeleteItem(id) {
+    if (!user?.uid || !id) return;
+    try {
+      await deleteItem(user.uid, id);
+      setItems((prev) => prev.filter((item) => item.id !== id));
+    } catch (err) {
+      setError("Could not delete item.");
+    }
+  }
+
   // Guard clause: if no user, prompt to log in
   if (!user) {
     return (
@@ -128,7 +145,7 @@ export default function Page() {
         <div>
           <Link
             className={`${buttonStyling} my-4 me-2 inline-block cursor-pointer bg-violet-700 py-3 text-violet-50 hover:translate-y-1 hover:bg-violet-500`}
-            href="/week-9/"
+            href="/week-10/"
           >
             Go to Login
           </Link>
@@ -145,7 +162,7 @@ export default function Page() {
           className={`${h1Styling} align-start w-full text-sky-900 sm:p-2 dark:text-sky-200`}
         >
           <Link
-            href="/week-9/"
+            href="/week-10/"
             className="me-5 hover:cursor-pointer hover:text-white"
           >
             ←

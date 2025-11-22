@@ -10,7 +10,6 @@ export default function NewItem({ onAddItem }) {
   const PLACEHOLDER_TEXT = "eg. milk, 4 L 🥛";
 
   // Use States
-  const id = Math.floor(Math.random() * 1000); // Random ID for each item
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState("Produce");
@@ -22,7 +21,6 @@ export default function NewItem({ onAddItem }) {
     const normalizedName = name.toLocaleLowerCase();
     const normalizedCategory = category.toLowerCase();
     const item = {
-      id,
       name: normalizedName,
       quantity,
       category: normalizedCategory,
