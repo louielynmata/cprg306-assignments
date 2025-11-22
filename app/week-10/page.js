@@ -41,7 +41,7 @@ export default function Page() {
       {!user ? (
         // Not logged in, show login button
         <section className="text-center">
-          <h1 className={h1Styling}>Week 9 - Welcome!</h1>
+          <h1 className={h1Styling}>Week 10 - Welcome!</h1>
           <p>Please log in with your GitHub account.</p>
           <button
             className={`${buttonStyling} my-4 bg-sky-700 text-sky-50 hover:bg-sky-500 disabled:bg-blue-200 disabled:text-blue-400`}
@@ -61,7 +61,7 @@ export default function Page() {
           <div>
             <Link
               className={`${buttonStyling} my-4 me-2 inline-block cursor-pointer bg-violet-700 py-3 text-violet-50 hover:translate-y-1 hover:bg-violet-500`}
-              href="/week-9/shopping-list"
+              href="/week-10/shopping-list"
             >
               Go to Shopping List
             </Link>
